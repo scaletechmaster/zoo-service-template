@@ -211,7 +211,8 @@ class SimpleExecutionHandler(ExecutionHandler):
         logger.info("get_additional_parameters")
         additional_parameters: Dict[str, str] = {}
         additional_parameters = self.conf.get("additional_parameters", {})
-
+        
+        additional_parameters["s3_bucket"] = self.conf["lenv"]["Identifier"]
         additional_parameters["sub_path"] = self.conf["lenv"]["usid"]
 
         logger.info(f"additional_parameters: {additional_parameters.keys()}")
